@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    ansible_python_interpreter: "/usr/bin/python"
+  roles:
+    - patchOS
+    - reboot-server
+    - docker-ce
+    - kubernetes
+    - reboot-server

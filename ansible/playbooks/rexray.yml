@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+  roles:
+    - patchOS
+    - reboot-server
+    - { role: REX-ray,
+      rexray_service: true,
+      rexray_log_level: warn,
+      rexray_storage_drivers: [azureud],
+      rexray_azure_subscriptionid: '{{ azure_subscriptionid }}',
+      rexray_azure_tenantid: '{{ azure_tenantid }}',
+      rexray_azure_clientid: '{{ azure_clientid }}',
+      rexray_azure_clientsecret: '{{ azure_clientsecret }}',
+      rexray_azure_resourcegroup: '{{ azure_resourcegroup }}',
+      rexray_azure_storageaccount: '{{ azure_storageaccount }}',
+      rexray_azure_storageaccesskey: '{{ azure_storageaccesskey }}',
+      rexray_azure_container: '{{ azure_container }}' }
+    - reboot-server

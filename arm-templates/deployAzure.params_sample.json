@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "servicePrincipalAppId": {
+      "value": "<your_principle_guid>"
+    },
+    "adminUser": {
+      "value": "<whoami>"
+    },
+    "adminSSHKey": {
+      "value": "<your_ssh_key>"
+    },
+    "vnetPrefix": {
+      "value": "10.1.0.0/24"
+    },
+    "subnetPrefix": {
+      "value": "10.1.0.0/25"
+    },
+    "remoteAccessACL": {
+      "value": "<your_host_ip>"
+    },
+    "serverNamePrefix": {
+      "value": "vm"
+    },
+    "serverSize": {
+      "value": "Standard_A1"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    }
+  }
+}

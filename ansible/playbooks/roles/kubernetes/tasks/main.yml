@@ -1,0 +1,27 @@
+---
+
+- name: check if kubernetes is installed
+  stat: path=/etc/kubernetes/admin.conf
+  register: admin_conf
+
+- name: Add Kubernetes repository key
+  apt_key:
+    url: "{{ kubernetes_apt_key_url }}"
+    state: present
+  when: not admin_conf.stat.exists
+
+- name: Add Kubernetes repository and update apt cache
+  apt_repository:
+    repo: "{{ kubernetes_apt_repository }}"
+    update_cache: yes
+    state: present
+  when: not admin_conf.stat.exists
+
+- name: Install Application Package
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - kubelet
+    - kubeadm
+    - kubectl
+    - kubernetes-cni
+  when: not admin_conf.stat.exists
