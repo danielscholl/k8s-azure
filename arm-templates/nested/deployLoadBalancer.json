@@ -22,8 +22,7 @@
     "PublicIpName": "[concat('lb-ip')]",
     "PublicIpId": "[resourceId('Microsoft.Network/publicIPAddresses',variables('PublicIpName'))]"
   },
-  "resources": [
-    {
+  "resources": [{
       "comments": "## Public IP ##",
       "name": "[variables('PublicIpName')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -50,23 +49,18 @@
         "displayName": "Internal Load Balancer"
       },
       "properties": {
-        "frontendIPConfigurations": [
-          {
-            "name": "lbFrontEnd",
-            "properties": {
-              "PublicIPAddress": {
-                "id": "[variables('PublicIpId')]"
-              }
+        "frontendIPConfigurations": [{
+          "name": "lbFrontEnd",
+          "properties": {
+            "PublicIPAddress": {
+              "id": "[variables('PublicIpId')]"
             }
           }
-        ],
-        "backendAddressPools": [
-          {
-            "name": "lbBackEnd"
-          }
-        ],
-        "loadBalancingRules": [
-          {
+        }],
+        "backendAddressPools": [{
+          "name": "lbBackEnd"
+        }],
+        "loadBalancingRules": [{
             "name": "rule-http",
             "properties": {
               "protocol": "Tcp",
@@ -103,8 +97,7 @@
             }
           }
         ],
-        "probes": [
-          {
+        "probes": [{
             "name": "probe-http",
             "properties": {
               "protocol": "Tcp",
@@ -150,7 +143,7 @@
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/loadBalancers/inboundNatRules",
-      "name": "[concat(variables('LBName'), '/', 'swarm-manager')]",
+      "name": "[concat(variables('LBName'), '/', 'dashboard')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[concat('Microsoft.Network/loadBalancers/', variables('LBName'))]"
@@ -160,8 +153,8 @@
           "id": "[concat(variables('LBId'), '/frontendIpConfigurations/lbFrontEnd')]"
         },
         "protocol": "tcp",
-        "frontendPort": "2376",
-        "backendPort": 2376,
+        "frontendPort": "8001",
+        "backendPort": 8001,
         "enableFloatingIP": false
       }
     }

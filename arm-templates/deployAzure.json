@@ -86,15 +86,14 @@
     }
   },
   "variables": {},
-  "resources": [
-    {
+  "resources": [{
       "name": "TemplateStorage",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/docker-swarm-azure/master/arm-templates/nested/', 'deployStorageAccount.json')]",
+          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/k8s-azure/master/arm-templates/nested/', 'deployStorageAccount.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -111,7 +110,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/docker-swarm-azure/master/arm-templates/nested/', 'deployKeyVault.json')]",
+          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/k8s-azure/master/arm-templates/nested/', 'deployKeyVault.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -137,7 +136,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/docker-swarm-azure/master/arm-templates/nested/', 'deployVNet.json')]",
+          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/k8s-azure/master/arm-templates/nested/', 'deployVNet.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -163,7 +162,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/docker-swarm-azure/master/arm-templates/nested/', 'deployLoadBalancer.json')]",
+          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/k8s-azure/master/arm-templates/nested/', 'deployLoadBalancer.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -183,7 +182,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/docker-swarm-azure/master/arm-templates/nested/', 'deployVirtualMachineAS.json')]",
+          "uri": "[concat('https://raw.githubusercontent.com/danielscholl/k8s-azure/master/arm-templates/nested/', 'deployVirtualMachineAS.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
