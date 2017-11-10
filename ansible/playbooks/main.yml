@@ -7,5 +7,3 @@
     - patchOS
     - reboot-server
     - docker-ce
-    - kubernetes
-    - reboot-server

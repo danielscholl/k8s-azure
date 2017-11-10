@@ -19,7 +19,7 @@ __Requirements:__
 
 ```
 git clone https://github.com/danielscholl/k8s-azure
-cd docker-swarm-azure
+cd k8s-azure
 ```
 
 ### Create the private ssh keys

@@ -42,4 +42,4 @@ if [ -f .ssh/id_rsa ]; then
 fi
 
 PORT=$((5000 + $INSTANCE))
-ssh -i ${SSH_KEY} $USER@$IP -A -p $PORT
+ssh -A -L 8001:127.0.0.1:8001 -L 8443:127.0.0.1:8443 -i ${SSH_KEY} -p $PORT $USER@$IP

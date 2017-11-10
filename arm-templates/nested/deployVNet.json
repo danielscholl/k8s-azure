@@ -38,8 +38,7 @@
     "Nsg1Name": "[concat(variables('Subnet1Name'), '-nsg')]",
     "Nsg1Id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('Nsg1Name'))]"
   },
-  "resources": [
-    {
+  "resources": [{
       "comments": "## Network Security Group ##",
       "name": "[variables('nsg1Name')]",
       "type": "Microsoft.Network/networkSecurityGroups",
@@ -49,8 +48,7 @@
         "displayName": "Network Security Group - Subnet"
       },
       "properties": {
-        "securityRules": [
-          {
+        "securityRules": [{
             "name": "allow-ssh",
             "properties": {
               "description": "Allow SSH",
@@ -67,10 +65,10 @@
           {
             "name": "allow-swarm",
             "properties": {
-              "description": "Allow Swarm Manager",
+              "description": "Allow Dashboad",
               "protocol": "Tcp",
               "sourcePortRange": "*",
-              "destinationPortRange": "2376",
+              "destinationPortRange": "8001",
               "sourceAddressPrefix": "[parameters('remoteAccessACL')]",
               "destinationAddressPrefix": "*",
               "access": "Allow",
@@ -127,17 +125,15 @@
             "[parameters('VNetPrefix')]"
           ]
         },
-        "subnets": [
-          {
-            "name": "[variables('Subnet1Name')]",
-            "properties": {
-              "addressPrefix": "[parameters('Subnet1Prefix')]",
-              "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsg1Name'))]"
-              }
+        "subnets": [{
+          "name": "[variables('Subnet1Name')]",
+          "properties": {
+            "addressPrefix": "[parameters('Subnet1Prefix')]",
+            "networkSecurityGroup": {
+              "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsg1Name'))]"
             }
           }
-        ]
+        }]
       }
     }
   ],
